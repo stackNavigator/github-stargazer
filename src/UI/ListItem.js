@@ -1,12 +1,11 @@
 import React from 'react'
-import { Text } from 'react-native'
 
-import { ListItemView, ListItemText } from '../Styled'
+import { ListItemView, InfoText } from '../Styled'
 
 const ListItem = ({ leftCaption, rightCaption }) => (
   <ListItemView>
-    <ListItemText>{leftCaption}</ListItemText>
-    <ListItemText>{rightCaption}</ListItemText>
+    <InfoText>{leftCaption}</InfoText>
+    <InfoText>{rightCaption}</InfoText>
   </ListItemView>
 )
 

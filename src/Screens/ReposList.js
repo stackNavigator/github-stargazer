@@ -10,17 +10,17 @@ const data = [
   {
     id: '1',
     full_name: 'facebook/react',
-    stargazers_count: '123455'
+    stars: '123455'
   },
   {
     id: '2',
-    full_name: 'vuejs/vue',
-    stargazers_count: '100043'
+    full_name: 'rubygarage/truemail',
+    stars: '1002'
   },
   {
     id: '3',
-    full_name: 'rubygarage/truemail',
-    stargazers_count: '1002'
+    full_name: 'vuejs/vue',
+    stars: '100043'
   }
 ]
 
@@ -31,9 +31,9 @@ const ReposList = () => {
         ? (
           <FlatList
             data={data}
-            renderItem={({ item: { full_name, stargazers_count } }) => {
+            renderItem={({ item: { full_name, stars } }) => {
               const Component = withNamedNavigation(
-                () => <ListItem leftCaption={full_name} rightCaption={parseInt(stargazers_count).toLocaleString()} />,
+                () => <ListItem leftCaption={full_name} rightCaption={parseInt(stars).toLocaleString()} />,
                 'RepoDetails',
                 full_name
               )
