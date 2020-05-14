@@ -25,12 +25,13 @@ const data = [
 ]
 
 const ReposList = () => {
+  const sortedData = data.sort((a, b) => b.stars - a.stars)
   return (
     <>
       {data
         ? (
           <FlatList
-            data={data}
+            data={sortedData}
             renderItem={({ item: { full_name, stars } }) => {
               const Component = withNamedNavigation(
                 () => <ListItem leftCaption={full_name} rightCaption={parseInt(stars).toLocaleString()} />,

@@ -7,10 +7,21 @@ export const CenteredView = styled.View`
   align-items: center;
 `
 
+export const TopView = styled.View`
+  display: flex;
+  margin: 15px;
+  /* align-items: center; */
+`
+
 export const DetailsContainer = styled.View`
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+`
+
+export const DetailsView = styled.View`
+  display: flex;
+  padding: 10px;
 `
 
 export const ListItemView = styled.View`
@@ -23,6 +34,7 @@ export const ListItemView = styled.View`
 
 export const InfoText = styled.Text`
   font-size: 20px;
+  color: ${({ color }) => color ? color : '#000'};
 `
 
 export const DetailsText = styled.Text`
@@ -37,12 +49,35 @@ export const HeaderText = styled.Text`
   margin-bottom: 20px;
 `
 
+export const ErrorText = styled.Text`
+  font-size: 20px;
+  color: #f00;
+  margin: 10px 0;
+`
+
 export const ItemSeparator = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: #ccc;
 `
 
-export const DetailsView = styled.View`
+export const Input = styled.TextInput`
+  width: 100%;
+  color: #000;
+  font-size: 20px;
+  border: 1px solid #000;
+  border-radius: 3px;
+  padding: 10px 5px;
+`
+
+export const ConfirmButton = styled.TouchableOpacity`
+  width: 100%;
+  border-radius: 20px;
+  font-size: 25px;
+  margin: 10px 0;
+  padding: 10px 0;
+  background-color: #1a75ff;
+  color: #fff;
   display: flex;
-  padding: 10px;
+  flex-direction: row;
+  justify-content: center;
 `

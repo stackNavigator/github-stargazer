@@ -1,11 +1,10 @@
 import React from 'react'
-import { Text } from 'react-native'
 
-import { CenteredView } from '../Styled'
+import { CenteredView, InfoText } from '../Styled'
 
 const PlaceholderView = ({ placeholderText }) => (
   <CenteredView>
-    <Text>{placeholderText}</Text>
+    <InfoText>{placeholderText}</InfoText>
   </CenteredView>
 )
 
