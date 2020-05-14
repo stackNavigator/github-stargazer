@@ -161,7 +161,6 @@
 				18F95E2C166D9BA059A40EC8 /* Pods-GithubStargazer-tvOSTests.debug.xcconfig */,
 				BA9523EC4E5E304FD10F7794 /* Pods-GithubStargazer-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
