@@ -1,7 +1,7 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 
-import ListItem from '../UI/ListItem'
+import ListItem from '../components/ListItem'
 import PlaceholderView from '../UI/PlaceholderView'
 import { ItemSeparator } from '../Styled'
 
