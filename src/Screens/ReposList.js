@@ -3,7 +3,6 @@ import { FlatList } from 'react-native'
 
 import ListItem from '../UI/ListItem'
 import PlaceholderView from '../UI/PlaceholderView'
-import withNamedNavigation from '../hoc/withNamedNavigation'
 import { ItemSeparator } from '../Styled'
 
 const data = [
@@ -32,14 +31,9 @@ const ReposList = () => {
         ? (
           <FlatList
             data={sortedData}
-            renderItem={({ item: { full_name, stars } }) => {
-              const Component = withNamedNavigation(
-                () => <ListItem leftCaption={full_name} rightCaption={parseInt(stars).toLocaleString()} />,
-                'RepoDetails',
-                full_name
-              )
-              return <Component />
-            }}
+            renderItem={({ item: { full_name, stars } }) => (
+              <ListItem leftCaption={full_name} rightCaption={parseInt(stars).toLocaleString()} />
+            )}
             ItemSeparatorComponent={() => <ItemSeparator />}
             ListFooterComponent={() => <ItemSeparator />} />
         )

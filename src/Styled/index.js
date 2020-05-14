@@ -10,7 +10,6 @@ export const CenteredView = styled.View`
 export const TopView = styled.View`
   display: flex;
   margin: 15px;
-  /* align-items: center; */
 `
 
 export const DetailsContainer = styled.View`
@@ -24,7 +23,7 @@ export const DetailsView = styled.View`
   padding: 10px;
 `
 
-export const ListItemView = styled.View`
+export const ListItemView = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
