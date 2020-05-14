@@ -3,6 +3,7 @@ import React from 'react'
 import InputField from '../components/InputField'
 import ErrorMessage from '../UI/ErrorMessage'
 import AddRepoButton from '../components/AddRepoButton'
+import withKeyboardDismiss from '../hoc/withKeyboardDismiss'
 import { TopView } from '../Styled'
 
 const error = true
@@ -17,4 +18,4 @@ const AddRepo = () => {
   )
 }
 
-export default AddRepo
+export default withKeyboardDismiss(AddRepo)

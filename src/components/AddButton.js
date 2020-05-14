@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const AddButton = () => {
   const { navigate } = useNavigation()
-  return <Button title="+" onPress={() => navigate('AddRepo')} />
+  return <Button title="+" fontSize={30} onPress={() => navigate('AddRepo')} />
 }
 
 export default AddButton

@@ -8,6 +8,7 @@ export const CenteredView = styled.View`
 `
 
 export const TopView = styled.View`
+  height: 100%;
   display: flex;
   margin: 15px;
 `

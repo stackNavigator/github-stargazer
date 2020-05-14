@@ -16,7 +16,7 @@ const data = {
 
 const RepoDetails = () => {
   const { languages, ...stats } = data
-  const localizedStats = Object.entries(stats).reduce((acc, [key, value]) => ({ 
+  const localizedStats = Object.entries(stats).reduce((acc, [key, value]) => ({
     ...acc,
     [key]: parseInt(value).toLocaleString()
   }), {})
