@@ -1,11 +1,12 @@
-import { GET_REPO_START, GET_REPO_FAIL, GET_REPO_SUCCESS, CLEAR_REPO_ADDITION } from '../actions/action-types'
+import {
+  GET_REPO_START, GET_REPO_FAIL, GET_REPO_SUCCESS, CLEAR_REPO_ADDITION, SORT_REPOS, REMOVE_REPO
+} from '../actions/action-types'
 
 const initState = {
   loading: false,
   error: false,
   repoWasAdded: false,
-  repos: [],
-  visitedRepos: []
+  repos: []
 }
 
 export default (state = initState, { type, ...payload }) => {
@@ -18,9 +19,16 @@ export default (state = initState, { type, ...payload }) => {
       return { ...state, error: true, loading: false }
     case GET_REPO_SUCCESS:
       const { repo } = payload
-      const { repos } = state
-      const repoExists = repos.some(({ id }) => id === repo.id)
-      return { ...state, repos: !repoExists ? [...repos, repo] : repos, repoWasAdded: true }
+      const repoExists = state.repos.some(({ id }) => id === repo.id)
+      return { ...state, repos: !repoExists ? [...state.repos, repo] : state.repos, repoWasAdded: true }
+    case REMOVE_REPO:
+      const { repoName } = payload
+      const filteredRepos = state.repos.filter(({ full_name }) => full_name !== repoName)
+      return { ...state, repos: filteredRepos }
+    case SORT_REPOS:
+      const { unsortedRepos } = payload
+      const sortedRepos = unsortedRepos.sort((a, b) => b.stars - a.stars)
+      return { ...state, repos: sortedRepos }
     default:
       return state
   }
