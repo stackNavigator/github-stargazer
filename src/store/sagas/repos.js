@@ -1,6 +1,6 @@
 import { put } from 'redux-saga/effects'
 
-import { getRepoStart, getRepoSuccess, getRepoFail } from '../actions/repos'
+import { getRepoStart, getRepoSuccess, getRepoLanguagesSuccess, getRepoFail } from '../actions/repos'
 import { urlBase } from '../public-urls'
 
 export function* getRepo({ repoName }) {
@@ -18,4 +18,14 @@ export function* getRepo({ repoName }) {
     stars: stargazers_count,
     forks: forks_count
   }))
+}
+
+export function* getRepoLanguages({ repoName }) {
+  yield put(getRepoStart())
+  const blob = yield fetch(`${urlBase}/${repoName}/languages`)
+  const response = yield blob.json()
+  const { message } = response
+  if (message)
+    return yield put(getRepoFail())
+  return yield put(getRepoLanguagesSuccess(repoName, response))
 }

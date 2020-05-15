@@ -1,34 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { ActivityIndicator } from 'react-native'
+import { useRoute } from '@react-navigation/native'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getRepoLanguages } from '../store/actions/repos'
 
 import Details from '../UI/Details'
 import { DetailsContainer } from '../Styled'
 
-const data = {
-  watchers: '10432',
-  stars: '123455',
-  forks: '23432',
-  languages: {
-    Javascript: '5232134',
-    HTML: '114863',
-    CSS: '59409'
-  }
-}
-
 const RepoDetails = () => {
-  const { languages, ...stats } = data
+  const { params: { name } } = useRoute()
+  const repo = useSelector(({ repoReducer: { repos } }) => repos)
+    .find(({ full_name }) => full_name === name)
+  const languages = useSelector(({ repoReducer: { languages } }) => languages)
+  const loading = useSelector(({ repoReducer: { loading } }) => loading)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getRepoLanguages(name))
+  }, [])
+  const { id, full_name, ...stats } = repo
   const localizedStats = Object.entries(stats).reduce((acc, [key, value]) => ({
     ...acc,
     [key]: parseInt(value).toLocaleString()
   }), {})
-  const totalBytes = Object.values(languages).reduce((acc, value) => acc + +value, 0)
-  const percentedLanguages = Object.entries(languages).reduce((acc, [key, value]) => ({
-    ...acc,
-    [key]: `${(value / totalBytes * 100).toFixed(1).replace('.', ',')}%`
-  }), {})
   return (
     <DetailsContainer>
       <Details headerCaption="Stats" mainInfo={localizedStats} />
-      <Details headerCaption="Languages" mainInfo={percentedLanguages} />
+      {loading
+        ? <ActivityIndicator />
+        : <Details headerCaption="Languages"
+          mainInfo={languages[name]} />}
     </DetailsContainer>
   )
 }

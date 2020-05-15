@@ -1,12 +1,14 @@
 import {
-  GET_REPO_START, GET_REPO_FAIL, GET_REPO_SUCCESS, CLEAR_REPO_ADDITION, SORT_REPOS, REMOVE_REPO
+  GET_REPO_START, GET_REPO_FAIL, GET_REPO_SUCCESS, CLEAR_REPO_ADDITION, SORT_REPOS, REMOVE_REPO,
+  GET_REPO_LANGUAGES_SUCCESS
 } from '../actions/action-types'
 
 const initState = {
   loading: false,
   error: false,
   repoWasAdded: false,
-  repos: []
+  repos: [],
+  languages: {}
 }
 
 export default (state = initState, { type, ...payload }) => {
@@ -21,6 +23,14 @@ export default (state = initState, { type, ...payload }) => {
       const { repo } = payload
       const repoExists = state.repos.some(({ id }) => id === repo.id)
       return { ...state, repos: !repoExists ? [...state.repos, repo] : state.repos, repoWasAdded: true }
+    case GET_REPO_LANGUAGES_SUCCESS:
+      const { targetName, languages } = payload
+      const totalBytes = Object.values(languages).reduce((acc, value) => acc + +value, 0)
+      const percentedLanguages = Object.entries(languages).reduce((acc, [key, value]) => ({
+        ...acc,
+        [key]: `${(value / totalBytes * 100).toFixed(1).replace('.', ',')}%`
+      }), {})
+      return { ...state, languages: { [targetName]: percentedLanguages }, loading: false }
     case REMOVE_REPO:
       const { repoName } = payload
       const filteredRepos = state.repos.filter(({ full_name }) => full_name !== repoName)
