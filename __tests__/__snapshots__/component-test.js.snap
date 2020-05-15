@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details component renders correctly without info prop 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "display": "flex",
+        "paddingBottom": 10,
+        "paddingLeft": 10,
+        "paddingRight": 10,
+        "paddingTop": 10,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 25,
+          "fontWeight": "700",
+          "marginBottom": 20,
+        },
+      ]
+    }
+  >
+    Test Header
+  </Text>
+</View>
+`;
+
+exports[`ListItem component renders full_name and stars count correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#dbddde",
+        "overflow": "hidden",
+      },
+      undefined,
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+        },
+      ],
+    ]
+  }
+>
+  <View
+    onLayout={[Function]}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    style={
+      Array [
+        Object {},
+        Object {
+          "left": 0,
+        },
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "opacity": 1,
+          "paddingBottom": 20,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 20,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontSize": 20,
+            },
+          ]
+        }
+      >
+        default/repo
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#000",
+              "fontSize": 20,
+            },
+          ]
+        }
+      >
+        15001
+      </Text>
+    </View>
+  </View>
+  <View />
+  <View />
+</View>
+`;
+
+exports[`withKeyboardDismiss HOC component is wrapped correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "paddingBottom": 0,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "display": "flex",
+          "paddingBottom": 10,
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "paddingTop": 10,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 25,
+            "fontWeight": "700",
+            "marginBottom": 20,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
