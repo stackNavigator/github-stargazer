@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { Platform } from 'react-native'
 
 export const CenteredView = styled.View`
   height: 100%;
@@ -67,6 +68,12 @@ export const Input = styled.TextInput`
   border: 1px solid #000;
   border-radius: 3px;
   padding: 10px 5px;
+`
+
+export const AddActionButton = styled.Text`
+  font-size: 30px;
+  margin-right: 15px;
+  color: ${() => Platform.OS === 'android' ? '#000' : '#1a75ff'}
 `
 
 export const ConfirmButton = styled.TouchableOpacity`

@@ -1,33 +1,17 @@
 import React from 'react'
 import { FlatList } from 'react-native'
+import { useSelector } from 'react-redux'
 
 import ListItem from '../components/ListItem'
 import PlaceholderView from '../UI/PlaceholderView'
 import { ItemSeparator } from '../Styled'
 
-const data = [
-  {
-    id: '1',
-    full_name: 'facebook/react',
-    stars: '123455'
-  },
-  {
-    id: '2',
-    full_name: 'rubygarage/truemail',
-    stars: '1002'
-  },
-  {
-    id: '3',
-    full_name: 'vuejs/vue',
-    stars: '100043'
-  }
-]
-
 const ReposList = () => {
+  const data = useSelector(({ repoReducer: { repos } }) => repos)
   const sortedData = data.sort((a, b) => b.stars - a.stars)
   return (
     <>
-      {data
+      {data.length
         ? (
           <FlatList
             data={sortedData}

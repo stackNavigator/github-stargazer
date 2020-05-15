@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import { } from 'react-redux'
 import Swipeout from 'react-native-swipeout'
 
 import { ListItemView, InfoText } from '../Styled'
