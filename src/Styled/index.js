@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import { Platform } from 'react-native'
 
-export const CenteredView = styled.View`
+export const CenteredView = styled.SafeAreaView`
   height: 100%;
   display: flex;
   justify-content: center;
