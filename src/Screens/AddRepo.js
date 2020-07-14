@@ -1,46 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { useSelector, useDispatch } from 'react-redux'
-
-import { changeRepoName, clearRepoName, getRepo, clearRepoAddition } from '../store/actions/repos'
+import { observer } from 'mobx-react'
 
 import InputField from '../UI/InputField'
 import ErrorMessage from '../UI/ErrorMessage'
 import AddRepoButton from '../UI/AddRepoButton'
-import withKeyboardDismiss from '../hoc/withKeyboardDismiss'
 import validate from '../validation/validate'
+import withKeyboardDismiss from '../hoc/withKeyboardDismiss'
+import { StoreContext } from '../hoc/withStore'
 import { TopView } from '../Styled'
 
-const AddRepo = () => {
-  const repoNameValue = useSelector(({ repoNameReducer: { repoNameValue } }) => repoNameValue)
-  const repoWasAdded = useSelector(({ repoReducer: { repoWasAdded } }) => repoWasAdded)
-  const loading = useSelector(({ repoReducer: { loading } }) => loading)
-  const error = useSelector(({ repoReducer: { error } }) => error)
-  const dispatch = useDispatch()
+const AddRepo = observer(() => {
   const { goBack } = useNavigation()
+  const store = useContext(StoreContext)
   useEffect(() => {
-    if (repoWasAdded) {
-      dispatch(clearRepoAddition())
+    if (store.repoWasAdded) {
+      store.clearRepoAddition()
       goBack()
     }
-    return () => dispatch(clearRepoName())
-  }, [repoWasAdded])
+    return () => store.clearRepoName()
+  }, [store.repoWasAdded])
   return (
     <TopView>
-      {loading
+      {store.loading
         ? <ActivityIndicator />
         : (
           <>
             <InputField
-              value={repoNameValue}
-              onChangeText={text => dispatch(changeRepoName(text))} />
-            {error && <ErrorMessage caption="Repository not found" />}
-            <AddRepoButton onPress={() => validate(repoNameValue) && dispatch(getRepo(repoNameValue))} />
+              value={store.repoName}
+              onChangeText={text => store.changeRepoName(text)} />
+            {store.error && <ErrorMessage caption="Repository not found" />}
+            <AddRepoButton onPress={() => validate(store.repoName) && store.getRepo(store.repoName)} />
           </>
         )}
     </TopView>
   )
-}
+})
 
 export default withKeyboardDismiss(AddRepo)
