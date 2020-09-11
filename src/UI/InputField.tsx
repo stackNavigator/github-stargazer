@@ -1,9 +1,9 @@
-import React from 'react'
-import { Platform } from 'react-native'
+import React from 'react';
+import {Platform} from 'react-native';
 
-import { Input } from '../Styled'
+import {Input} from '../Styled';
 
-const InputField = ({ onChangeText, value }) => (
+const InputField = ({onChangeText, value}) => (
   <Input
     onChangeText={text => onChangeText(text)}
     value={value}
@@ -11,7 +11,8 @@ const InputField = ({ onChangeText, value }) => (
     autoCapitalize="none"
     returnKeyType="done"
     keyboardType={Platform.OS === 'android' ? 'visible-password' : undefined}
-    enablesReturnKeyAutomatically />
-)
+    enablesReturnKeyAutomatically
+  />
+);
 
-export default InputField
+export default InputField;
