@@ -6,7 +6,12 @@ import {StoreContext} from '../hoc/withStore';
 import {ListItemView, InfoText} from '../Styled';
 import {IStore} from '../store';
 
-const ListItem = ({leftCaption, rightCaption}) => {
+interface Props {
+  leftCaption: string;
+  rightCaption: string;
+}
+
+const ListItem = ({leftCaption, rightCaption}: Props) => {
   const {navigate} = useNavigation();
   const store: IStore = useContext(StoreContext);
   return (

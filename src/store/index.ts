@@ -2,15 +2,33 @@ import {observable, computed, action, flow, decorate} from 'mobx';
 
 import {urlBase} from './public-urls';
 
+interface Stats {
+  watchers?: number;
+  stars?: number;
+  forks?: number;
+}
+
+interface Languages {
+  [repoName: string]: string;
+}
+
+interface Repo {
+  id: number;
+  full_name?: string;
+  watchers?: number;
+  stars: number;
+  forks?: number;
+}
+
 export interface IStore {
   repoName: string;
   repoWasAdded: boolean;
   error: boolean;
   loading: boolean;
-  repos: any[];
-  languages: any;
-  stats: any;
-  sortedRepos: any[];
+  repos: Repo[];
+  languages: Languages;
+  stats: Stats;
+  sortedRepos: Repo[];
   changeRepoName: (value: string) => void;
   clearRepoName: () => void;
   clearRepoAddition: () => void;
@@ -25,7 +43,7 @@ class Store implements IStore {
   repoWasAdded = false;
   error = false;
   loading = false;
-  repos = [];
+  repos: Repo[] = [];
   languages = {};
   stats = {};
 
@@ -92,7 +110,7 @@ class Store implements IStore {
       forks: forks_count,
     };
     const repoExists = this.repos.some(
-      ({id: currentId}) => currentId === repo.id,
+      ({id: currentId}: Repo) => currentId === repo.id,
     );
     if (!repoExists) {
       this.repos.push(repo);

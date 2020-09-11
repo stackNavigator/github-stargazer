@@ -2,6 +2,10 @@ import React from 'react';
 
 import {ErrorText} from '../Styled';
 
-const ErrorMessage = ({caption}) => <ErrorText>{caption}</ErrorText>;
+interface Props {
+  caption: string;
+}
+
+const ErrorMessage = ({caption}: Props) => <ErrorText>{caption}</ErrorText>;
 
 export default ErrorMessage;

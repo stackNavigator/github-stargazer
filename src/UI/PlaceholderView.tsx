@@ -2,7 +2,11 @@ import React from 'react';
 
 import {CenteredView, InfoText} from '../Styled';
 
-const PlaceholderView = ({placeholderText}) => (
+interface Props {
+  placeholderText: string;
+}
+
+const PlaceholderView = ({placeholderText}: Props) => (
   <CenteredView>
     <InfoText>{placeholderText}</InfoText>
   </CenteredView>

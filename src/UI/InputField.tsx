@@ -3,9 +3,14 @@ import {Platform} from 'react-native';
 
 import {Input} from '../Styled';
 
-const InputField = ({onChangeText, value}) => (
+interface Props {
+  onChangeText: (text: string) => void;
+  value: string;
+}
+
+const InputField = ({onChangeText, value}: Props) => (
   <Input
-    onChangeText={text => onChangeText(text)}
+    onChangeText={(text: string) => onChangeText(text)}
     value={value}
     autoCorrect={false}
     autoCapitalize="none"

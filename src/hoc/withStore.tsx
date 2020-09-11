@@ -6,7 +6,7 @@ export let StoreContext: React.Context<IStore> = {
   Consumer: null,
 };
 
-export default (store, Component) => {
+export default (store: IStore, Component: React.ComponentType) => {
   StoreContext = createContext(store);
   return () => (
     <StoreContext.Provider value={store}>

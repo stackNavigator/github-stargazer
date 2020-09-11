@@ -30,7 +30,7 @@ const AddRepo = observer(() => {
         <>
           <InputField
             value={store.repoName}
-            onChangeText={text => store.changeRepoName(text)}
+            onChangeText={(text: string) => store.changeRepoName(text)}
           />
           {store.error && <ErrorMessage caption="Repository not found" />}
           <AddRepoButton

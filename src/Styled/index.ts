@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import {Platform} from 'react-native';
 
+interface ColorProps {
+  color: string;
+}
+
 export const CenteredView = styled.SafeAreaView`
   height: 100%;
   display: flex;
@@ -30,7 +34,7 @@ export const ListItemView = styled.TouchableOpacity`
 
 export const InfoText = styled.Text`
   font-size: 20px;
-  color: ${({color}) => (color ? color : '#000')};
+  color: ${({color}: ColorProps) => (color ? color : '#000')};
 `;
 
 export const DetailsText = styled.Text`

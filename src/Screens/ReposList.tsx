@@ -18,7 +18,7 @@ const ReposList = observer(() => {
           renderItem={({item: {full_name, stars}}) => (
             <ListItem
               leftCaption={full_name}
-              rightCaption={parseInt(stars, 10).toLocaleString()}
+              rightCaption={stars.toLocaleString()}
             />
           )}
           ItemSeparatorComponent={() => <ItemSeparator />}
