@@ -14,14 +14,9 @@ export const TopView = styled.View`
   margin: 15px;
 `
 
-export const DetailsContainer = styled.View`
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-`
-
 export const DetailsView = styled.View`
   display: flex;
+  flex: 1;
   padding: 10px;
 `
 
