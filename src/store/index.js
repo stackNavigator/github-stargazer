@@ -96,7 +96,6 @@ decorate(Store, {
   loading: observable,
   repos: observable,
   languages: observable,
-  stats: observable,
   sortedRepos: computed,
   changeRepoName: action,
   clearRepoName: action,
