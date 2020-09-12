@@ -15,7 +15,7 @@ const ReposList = observer(() => {
       {store.sortedRepos.length ? (
         <FlatList
           data={store.sortedRepos}
-          renderItem={({item: {full_name, stars}}) => (
+          renderItem={({item: {full_name = '', stars}}) => (
             <ListItem
               leftCaption={full_name}
               rightCaption={stars.toLocaleString()}

@@ -9,7 +9,9 @@ interface Stats {
 }
 
 interface Languages {
-  [repoName: string]: string;
+  [repoName: string]: {
+    [languageName: string]: string;
+  };
 }
 
 interface Repo {
@@ -73,7 +75,7 @@ class Store implements IStore {
 
   localizeRepoStats(repoName: string) {
     const repo = this.repos.find(({full_name}) => full_name === repoName);
-    const {id, full_name, ...stats} = repo;
+    const {id, full_name, ...stats} = repo || {};
     this.stats = Object.entries(stats).reduce(
       (acc, [key, value]: [string, string]) => ({
         ...acc,
@@ -83,7 +85,7 @@ class Store implements IStore {
     );
   }
 
-  getRepo = flow(function*(repoName: string) {
+  getRepo = flow(function*(this: IStore, repoName: string) {
     this.error = false;
     this.loading = true;
     const blob = yield fetch(`${urlBase}/${repoName}`);
@@ -118,7 +120,7 @@ class Store implements IStore {
     this.repoWasAdded = true;
   });
 
-  getRepoLanguages = flow(function*(repoName: string) {
+  getRepoLanguages = flow(function*(this: IStore, repoName: string) {
     this.error = false;
     this.loading = true;
     const blob = yield fetch(`${urlBase}/${repoName}/languages`);
@@ -130,8 +132,8 @@ class Store implements IStore {
       return;
     }
     const totalBytes =
-      Object.values(response).reduce<number>((acc: number, value: number) => acc + +value, 0);
-    const percentedLanguages = Object.entries(response).reduce(
+      Object.values<number>(response).reduce((acc: number, value: number) => acc + +value, 0);
+    const percentedLanguages = Object.entries<number>(response).reduce(
       (acc, [key, value]: [string, number]) => ({
         ...acc,
         [key]: `${((value / totalBytes) * 100).toFixed(1).replace('.', ',')}%`,
